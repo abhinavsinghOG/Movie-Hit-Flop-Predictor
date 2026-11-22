@@ -51,7 +51,10 @@ score = st.sidebar.slider("Expected IMDb score", float(opt["score_min"]),
 votes = st.sidebar.number_input("Expected IMDb votes", 1000, 3000000, 100000, 5000)
 
 st.sidebar.divider()
-release_month = st.sidebar.selectbox("Release month", opt["release_month"])
+month_order = ["January", "February", "March", "April", "May", "June", "July",
+               "August", "September", "October", "November", "December", "Unknown"]
+months = [m for m in month_order if m in opt["release_month"]]
+release_month = st.sidebar.selectbox("Release month", months)
 genre = st.sidebar.selectbox("Genre", opt["genre_grp"])
 rating = st.sidebar.selectbox("MPAA rating", opt["rating_grp"])
 country = st.sidebar.selectbox("Country", opt["country_grp"])
