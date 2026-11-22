@@ -40,6 +40,8 @@ def load_options():
 
 model = load_model()
 opt = load_options()
+def other_last(values):
+    return [v for v in values if v != "Other"] + (["Other"] if "Other" in values else [])
 
 # ---------- Sidebar inputs ----------
 st.sidebar.title("🎞️ Movie Details")
@@ -55,12 +57,12 @@ month_order = ["January", "February", "March", "April", "May", "June", "July",
                "August", "September", "October", "November", "December", "Unknown"]
 months = [m for m in month_order if m in opt["release_month"]]
 release_month = st.sidebar.selectbox("Release month", months)
-genre = st.sidebar.selectbox("Genre", opt["genre_grp"])
-rating = st.sidebar.selectbox("MPAA rating", opt["rating_grp"])
-country = st.sidebar.selectbox("Country", opt["country_grp"])
-company = st.sidebar.selectbox("Production company", opt["company_grp"])
-director = st.sidebar.selectbox("Director", opt["director_grp"])
-star = st.sidebar.selectbox("Lead star", opt["star_grp"])
+genre = st.sidebar.selectbox("Genre", other_last(opt["genre_grp"]))
+rating = st.sidebar.selectbox("MPAA rating", other_last(opt["rating_grp"]))
+country = st.sidebar.selectbox("Country", other_last(opt["country_grp"]))
+company = st.sidebar.selectbox("Production company", other_last(opt["company_grp"]))
+director = st.sidebar.selectbox("Director", other_last(opt["director_grp"]))
+star = st.sidebar.selectbox("Lead star", other_last(opt["star_grp"]))
 
 # ---------- Main page ----------
 st.markdown("""
