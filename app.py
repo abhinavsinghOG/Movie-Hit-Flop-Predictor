@@ -46,10 +46,10 @@ def other_last(values):
 # ---------- Sidebar inputs ----------
 st.sidebar.title("🎞️ Movie Details")
 budget = st.sidebar.number_input("Budget (USD)", 100000, 500000000, 50000000, 1000000)
-runtime = st.sidebar.slider("Runtime (minutes)", opt["runtime_min"], opt["runtime_max"], 110)
+runtime = st.sidebar.slider("Runtime (minutes)", opt["runtime_min"], 250, 110)
 year = st.sidebar.slider("Release year", opt["year_min"], 2030, 2024)
 score = st.sidebar.slider("Expected IMDb score", float(opt["score_min"]),
-                          float(opt["score_max"]), 6.5, step=0.1)
+                          10.0, 6.5, step=0.1)
 votes = st.sidebar.number_input("Expected IMDb votes", 1000, 3000000, 100000, 5000)
 
 st.sidebar.divider()
